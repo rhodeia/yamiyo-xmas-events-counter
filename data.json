@@ -1,0 +1,18 @@
+{
+  "eventType":"follower",
+  "goal":100,
+  "eventPeriod":"month",
+  "onGoalReach":"nothing",
+  "autoIncrement":0,
+  "botCounter":false,
+  "titleText":"Follower goal",
+  "titleColor":"#ffffff",
+  "titleSize":23,
+  "counterColor":"#6b9b84",
+  "counterSize":28,
+  "userLocale":"en-US",
+  "widgetName":"Xmas Events Widget",
+  "widgetAuthor":"Yamiyo/Rho",
+  "widgetVersion":"1.0",
+  "widgetUpdateUrl":"https://github.com/rhodeia/yamiyo-xmas-events-counter"
+}
