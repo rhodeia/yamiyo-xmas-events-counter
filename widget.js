@@ -118,7 +118,7 @@ function updateGoal(count) {
 function animateTree(count) {
     if (animationCount <= (totalAnimations))  {
         let goalReachedPercentage = count/goal; 
-        console.log("% of goal reached: ",Math.goalReachedPercentage * 100,"%");
+        console.log("% of goal reached: ",goalReachedPercentage * 100,"%");
         let groupsToAnimate = Math.min(Math.ceil(goalReachedPercentage * totalAnimations), totalAnimations);
         console.log("groups to animate: ",groupsToAnimate);
 
@@ -129,7 +129,7 @@ function animateTree(count) {
             if (animationCount === totalAnimations) {
                 $("#tree-star").addClass("glow");
             } else {
-                $(".anim-group"+animationCount).removeClass("hide").addClass("animate__animated animate__fadeIn");
+                $(".anim-group"+animationCount).removeClass("hide").addClass("animate__animated animate__bounceIn");
             }            
         }
     }
