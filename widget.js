@@ -1,4 +1,9 @@
+// This widget uses the GoalsOverPeriod boilerplate; modified and used with permission from official StreamLabs widgets Github repo:
+// https://github.com/StreamElements/widgets
+
 let index, goal, fieldData, currency, userLocale, prevCount, timeout;
+let totalAnimations = 10;
+let animationCount = 0;
 
 function setGoal() {
     if (fieldData['eventType'] === 'tip') {
@@ -17,6 +22,7 @@ function setGoal() {
 }
 
 window.addEventListener('onWidgetLoad', async function (obj) {
+        console.log("load widget");
         fieldData = obj.detail.fieldData;
         goal = fieldData["goal"];
         userLocale = fieldData["userLocale"];
@@ -37,7 +43,7 @@ window.addEventListener('onWidgetLoad', async function (obj) {
             goal = await getCounterValue(obj.detail.channel.apiToken);
         }
         setGoal()
-        updateBar(count);
+        updateGoal(count);
     }
 );
 
@@ -57,6 +63,7 @@ let getCounterValue = apiKey => {
 };
 
 window.addEventListener('onSessionUpdate', function (obj) {
+    console.log("update sesh")
     if (typeof obj["detail"]["session"][index] !== 'undefined') {
         if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
             count = obj["detail"]["session"][index]['amount'];
@@ -64,28 +71,29 @@ window.addEventListener('onSessionUpdate', function (obj) {
             count = obj["detail"]["session"][index]['count'];
         }
     }
-    updateBar(count);
+    updateGoal(count);
 });
 
 window.addEventListener('onEventReceived', function (obj) {
+    console.log("event received")
     const listener = obj.detail.listener;
     const data = obj.detail.event;
 
     if (listener === 'bot:counter' && data.counter === "goal") {
         goal = data.value;
         setGoal();
-        updateBar(count);
+        updateGoal(count);
     }
 });
 
 
-function updateBar(count) {
+function updateGoal(count) {
     if (count === prevCount) return;
     if (count >= goal) {
         if (fieldData['autoIncrement'] > 0 && fieldData.onGoalReach === "increment") {
             goal += fieldData['autoIncrement'];
             setGoal();
-            updateBar(count);
+            updateGoal(count);
             return;
         } else if (fieldData.onGoalReach === "reset") {
             fieldData.onGoalReach === "reset";
@@ -94,9 +102,7 @@ function updateBar(count) {
     }
     clearTimeout(timeout);
     prevCount = count;
-    $("body").fadeTo("slow", 1);
-    let percentage = Math.min(100, (count / goal * 100).toPrecision(3));
-    $("#bar").css('width', percentage + "%");
+   
     if (fieldData['eventType'] === 'tip') {
         if (count % 1) {
             count = count.toLocaleString(userLocale, {style: 'currency', currency: currency})
@@ -105,4 +111,26 @@ function updateBar(count) {
         }
     }
     $("#count").html(count);
+    
+    animateTree(count);
+}
+
+function animateTree(count) {
+    if (animationCount <= (totalAnimations))  {
+        let goalReachedPercentage = count/goal; 
+        console.log("% of goal reached: ",Math.goalReachedPercentage * 100,"%");
+        let groupsToAnimate = Math.min(Math.ceil(goalReachedPercentage * totalAnimations), totalAnimations);
+        console.log("groups to animate: ",groupsToAnimate);
+
+        for (let i = animationCount; i < groupsToAnimate; i++) {
+            animationCount++;
+            console.log("animating group "+i+" ",animationCount);
+
+            if (animationCount === totalAnimations) {
+                $("#tree-star").addClass("glow");
+            } else {
+                $(".anim-group"+animationCount).removeClass("hide").addClass("animate__animated animate__fadeIn");
+            }            
+        }
+    }
 }
