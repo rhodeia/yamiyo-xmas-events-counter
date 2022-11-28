@@ -83,9 +83,9 @@
   color: {{counterColor}};
 }
 
-.ornaments-set1, .ornaments-set2, .ornaments-set3,
-.ornaments-set4, .ornaments-set5, .gifts-set6,
-.gifts-set7, .gifts-set8, .gifts-set9 {
+.anim-group1, .anim-group2, .anim-group3,
+.anim-group4, .anim-group5, .anim-group6,
+.anim-group7, .anim-group8, .anim-group9 {
   position: absolute;
   width: 754px;
   height: 1163px;
@@ -138,8 +138,14 @@
   }
 }
 
+.hide {
+  display: none;
+}
 
-
+#tree-star.glow {
+  /* add glow animation here */
+  stroke: blue;
+}
 
 
 
