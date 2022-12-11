@@ -24,7 +24,7 @@
   "eventPeriod": {
     "group": "Event",
     "type": "dropdown",
-    "label": "Event period (sub points don't work)",
+    "label": "Event period (excludes sub points)",
     "value": "session",
     "options": {
       "session": "Session",
@@ -63,29 +63,29 @@
     "label": "Title text",
     "value": "Follower goal"
   },
-  "titleColor": {
-    "group": "Text",
-    "type": "colorpicker",
-    "label": "Title font color",
-    "value": "rgb(255, 255, 255)"
-  },
   "titleSize": {
     "group": "Text",
     "type": "number",
     "label": "Title font size",
     "value": 23
   },
-  "counterColor": {
-    "group": "Text",
-    "type": "colorpicker",
-    "label": "Counter font color",
-    "value": "rgb(107, 155, 132)"
-  },
   "counterSize": {
     "group": "Text",
     "type": "number",
     "label": "Counter font size",
     "value": 28
+  },
+  "titleColor": {
+    "group": "Color",
+    "type": "colorpicker",
+    "label": "Title font color",
+    "value": "rgb(255, 255, 255)"
+  },
+  "counterColor": {
+    "group": "Color",
+    "type": "colorpicker",
+    "label": "Counter font color",
+    "value": "rgb(107, 155, 132)"
   },
   "userLocale": {
     "group": "Text",
@@ -529,18 +529,18 @@
       "zu": "Zulu"
     }
   },
-  "resetCheckbox": {
-    "group": "Reset",
-    "type": "checkbox",
-    "label": "NOTE: Clicking the blue button below will reset your current goal progress to 0.",
-    "value": true
-  },
   "resetButton": {
     "group": "Reset",
     "type": "button",
     "name": "resetButton",
     "label": "Reset goal progress",
     "value": "resetProgress"
+  },
+  "resetCheckbox": {
+    "group": "Reset",
+    "type": "checkbox",
+    "label": "NOTE: Clicking the blue button above will reset your current goal progress to 0.",
+    "value": true
   },
   "widgetName": {
     "group": "Text",
