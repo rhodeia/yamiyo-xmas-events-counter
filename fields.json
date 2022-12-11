@@ -1,5 +1,6 @@
 {
   "eventType": {
+    "group": "Event",
    "type": "dropdown",
    "label": "Event type",
    "value": "follower",
@@ -15,11 +16,13 @@
    }
  },
  "goal": {
+   "group": "Goal",
    "type": "number",
    "label": "Goal amount",
    "value": 100
  },
   "eventPeriod": {
+    "group": "Event",
    "type": "dropdown",
    "label": "Event period (sub points don't work)",
    "value": "session",
@@ -32,6 +35,7 @@
    }
  },
  "onGoalReach": {
+   "group": "Goal",
    "type": "dropdown",
    "label": "On goal reach",
    "value": "nothing",
@@ -42,41 +46,49 @@
    }
  },
  "autoIncrement": {
+   "group": "Goal",
    "type": "number",
    "label": "Auto increment goal when reached by",
    "value": 0
  },
  "botCounter": {
+   "group": "Goal",
    "type": "checkbox",
    "label": "Use 'goal' bot counter as goal number?",
    "value": false
  },
  "titleText": {
+   "group": "Text",
    "type": "text",
    "label": "Title text",
    "value": "Follower goal"
  },
  "titleColor": {
+   "group": "Text",
    "type": "colorpicker",
    "label": "Title font color",
    "value": "rgb(255, 255, 255)"
  },
  "titleSize": {
+   "group": "Text",
    "type": "number",
    "label": "Title font size",
    "value": 23
  },
  "counterColor": {
+   "group": "Text",
    "type": "colorpicker",
    "label": "Counter font color",
    "value": "rgb(107, 155, 132)"
  },
  "counterSize": {
+   "group": "Text",
    "type": "number",
    "label": "Counter font size",
    "value": 28
  },
  "userLocale": {
+   "group": "Text",
    "type": "dropdown",
    "label": "Locale",
    "value": "en-US",
@@ -517,19 +529,36 @@
      "zu": "Zulu"
    }
  },
+ "resetCheckbox": {
+   "group": "Reset",
+   "type": "checkbox",
+   "label": "NOTE: Clicking the blue button below will reset your current goal progress to 0.",
+   "value": true
+ },
+ "resetButton": {
+  	"group": "Reset",
+    "type": "button",
+    "name": "resetButton",
+    "label": "Reset goal progress",
+    "value": "resetProgress"
+  },
  "widgetName": {
+    "group": "Text",
    "type": "hidden",
    "value": "Xmas Events Widget"
  },
  "widgetAuthor": {
+    "group": "Text",
    "type": "hidden",
    "value": "Yamiyo/Rho"
  },
  "widgetVersion": {
+    "group": "Text",
    "type": "hidden",
    "value": "1.0"
  },
  "widgetUpdateUrl": {
+    "group": "Text",
    "type": "hidden",
    "value": "https://github.com/rhodeia/yamiyo-xmas-events-counter"
  }

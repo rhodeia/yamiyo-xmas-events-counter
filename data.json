@@ -11,6 +11,7 @@
   "counterColor":"#6b9b84",
   "counterSize":28,
   "userLocale":"en-US",
+  "resetCheckbox": true,
   "widgetName":"Xmas Events Widget",
   "widgetAuthor":"Yamiyo/Rho",
   "widgetVersion":"1.0",
