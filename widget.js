@@ -86,6 +86,11 @@ window.addEventListener('onEventReceived', function (obj) {
     }
 });
 
+function resetCount(count) {
+    console.log("reset?")
+    fieldData.onGoalReach === "reset";
+    count = count % goal;
+}
 
 function updateGoal(count) {
     if (count === prevCount) return;
@@ -96,6 +101,7 @@ function updateGoal(count) {
             updateGoal(count);
             return;
         } else if (fieldData.onGoalReach === "reset") {
+            // resetCount(count);
             fieldData.onGoalReach === "reset";
             count = count % goal;
         }

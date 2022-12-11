@@ -94,58 +94,32 @@
   z-index: 1;
 }
 
-@keyframes pop-in {
-  0% {
-      width: 0px;
-      height: 0px;
-      background-size: 0px 0px;
-      margin-top: 23px;
-      margin-left: 24px;
-  }
-  50% {
-      width: 0px;
-      height: 0px;
-      background-size: 0px 0px;
-      margin-top: 12px;
-      margin-left: 12px;
-      margin-right: 12px;
-      margin-bottom: 12px
-  }
-  85% {
-      width: 23px;
-      height: 23px;
-      background-size: 23px 23px;
-      margin-top: 1px;
-      margin-left: 2px;
-      margin-right: 0px;
-      margin-bottom: 0px
-  }
-  100% {
-      width: 21px;
-      height: 21px;
-      background-size: 21px 21px;
-      margin-top: 2px;
-      margin-left: 3px;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-      opacity: 0;
-  }
-  100% {
-      opacity: 1;
-  }
-}
-
 .hide {
   display: none;
 }
 
-#tree-star.glow {
-  /* add glow animation here */
-  stroke: blue;
+/* Glow animation (Xmas star) */
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0px 0px 0px rgb(255, 225, 116));
+  }
+  
+  50% {
+    filter: drop-shadow(0px 0px 20px rgb(255, 225, 116));
+  }
+  
+
+  100% {
+    filter: drop-shadow(0px 0px 0px rgb(255, 225, 116));
+  }
 }
+
+#tree-star.glow {
+  animation: glow 2.5s infinite ease-in-out;
+}
+
+
+
 
 
 
