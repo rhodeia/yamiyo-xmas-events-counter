@@ -2,8 +2,10 @@
 // https://github.com/StreamElements/widgets
 
 let index, goal, fieldData, currency, userLocale, prevCount, timeout;
-let totalAnimations = 10;
 let animationCount = 0;
+
+const TOTAL_ANIMATIONS = 10;
+const COUNT_START = 0;
 
 function setGoal() {
     if (fieldData['eventType'] === 'tip') {
@@ -22,7 +24,6 @@ function setGoal() {
 }
 
 window.addEventListener('onWidgetLoad', async function (obj) {
-        console.log("load widget");
         fieldData = obj.detail.fieldData;
         goal = fieldData["goal"];
         userLocale = fieldData["userLocale"];
@@ -43,7 +44,7 @@ window.addEventListener('onWidgetLoad', async function (obj) {
             goal = await getCounterValue(obj.detail.channel.apiToken);
         }
         setGoal()
-        updateGoal(count);
+        updateCount(count);
     }
 );
 
@@ -63,7 +64,6 @@ let getCounterValue = apiKey => {
 };
 
 window.addEventListener('onSessionUpdate', function (obj) {
-    console.log("update sesh")
     if (typeof obj["detail"]["session"][index] !== 'undefined') {
         if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
             count = obj["detail"]["session"][index]['amount'];
@@ -71,37 +71,34 @@ window.addEventListener('onSessionUpdate', function (obj) {
             count = obj["detail"]["session"][index]['count'];
         }
     }
-    updateGoal(count);
+    updateCount(count);
 });
 
 window.addEventListener('onEventReceived', function (obj) {
-    console.log("event received")
     const listener = obj.detail.listener;
     const data = obj.detail.event;
 
     if (listener === 'bot:counter' && data.counter === "goal") {
         goal = data.value;
         setGoal();
-        updateGoal(count);
+        updateCount(count);
+    }
+
+    if (data.listener === 'widget-button' && data.field === 'resetButton') {
+        updateCount(COUNT_START);
     }
 });
 
-function resetCount(count) {
-    console.log("reset?")
-    fieldData.onGoalReach === "reset";
-    count = count % goal;
-}
 
-function updateGoal(count) {
+function updateCount(count) {
     if (count === prevCount) return;
     if (count >= goal) {
         if (fieldData['autoIncrement'] > 0 && fieldData.onGoalReach === "increment") {
             goal += fieldData['autoIncrement'];
             setGoal();
-            updateGoal(count);
+            updateCount(count);
             return;
         } else if (fieldData.onGoalReach === "reset") {
-            // resetCount(count);
             fieldData.onGoalReach === "reset";
             count = count % goal;
         }
@@ -122,17 +119,17 @@ function updateGoal(count) {
 }
 
 function animateTree(count) {
-    if (animationCount <= (totalAnimations))  {
+    if (animationCount <= (TOTAL_ANIMATIONS))  {
         let goalReachedPercentage = count/goal; 
         console.log("% of goal reached: ",goalReachedPercentage * 100,"%");
-        let groupsToAnimate = Math.min(Math.ceil(goalReachedPercentage * totalAnimations), totalAnimations);
-        console.log("groups to animate: ",groupsToAnimate);
+        let groupsToAnimate = Math.min(Math.ceil(goalReachedPercentage * TOTAL_ANIMATIONS), TOTAL_ANIMATIONS);
+        // console.log("groups to animate: ",groupsToAnimate);
 
         for (let i = animationCount; i < groupsToAnimate; i++) {
             animationCount++;
-            console.log("animating group "+i+" ",animationCount);
+            // console.log("animating group "+i+" ",animationCount);
 
-            if (animationCount === totalAnimations) {
+            if (animationCount === TOTAL_ANIMATIONS) {
                 $("#tree-star").addClass("glow");
             } else {
                 $(".anim-group"+animationCount).removeClass("hide").addClass("animate__animated animate__bounceIn");
