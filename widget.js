@@ -132,7 +132,8 @@ function animateTree(count) {
             if (animationCount === TOTAL_ANIMATIONS) {
                 $("#tree-star").addClass("glow");
             } else {
-                $(".anim-group"+animationCount).removeClass("hide").addClass("animate__animated animate__bounceIn");
+                // $(".anim-group"+animationCount).removeClass("hide").addClass("animate__animated animate__bounceIn");
+                $(".anim-group"+animationCount).removeClass("hide").addClass("bounce");
             }            
         }
     }

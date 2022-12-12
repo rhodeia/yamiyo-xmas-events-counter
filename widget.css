@@ -100,6 +100,37 @@
   display: none;
 }
 
+/* Bounce animation (ornaments & gifts) */
+@keyframes bounce {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: scale3d(.3,.3,.3);
+    
+  }
+
+  50% {
+    transform: scale3d(1.1, 1.1, 1.1);
+    
+  }
+
+  75% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.bounce {
+  animation: bounce 0.5s both;
+}
+
 /* Glow animation (Xmas star) */
 @keyframes glow {
   0% {
