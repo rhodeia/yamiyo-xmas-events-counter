@@ -1,6 +1,6 @@
 /* 
 *********************
-Christmas Events Counter (JS)
+Christmas Events Widget (JS)
 *********************
 Designed by Yamiyo (twitter.com/yamiyoukii)
 Developed by Rhodeia (twitter.com/rhodeia_ch)
@@ -140,6 +140,8 @@ function animateTree(count) {
                 $("#tree-star").addClass("glow");
             } else {
                 // $(".anim-group"+animationCount).removeClass("hide").addClass("animate__animated animate__bounceIn");
+
+                // TODO: Handle removal of animation class
                 $(".anim-group"+animationCount).removeClass("hide").addClass("bounce");
             }            
         }
