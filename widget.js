@@ -1,6 +1,13 @@
-// This widget uses the GoalsOverPeriod boilerplate; modified and used with permission from official StreamLabs widgets Github repo:
-// https://github.com/StreamElements/widgets
+/* 
+*********************
+Christmas Events Counter (JS)
+*********************
+Designed by Yamiyo (twitter.com/yamiyoukii)
+Developed by Rhodeia (twitter.com/rhodeia_ch)
 
+This widget uses the GoalsOverPeriod boilerplate; modified and used with permission from official StreamLabs widgets Github repo:
+https://github.com/StreamElements/widgets
+*/
 let index, goal, fieldData, currency, userLocale, prevCount, timeout;
 let animationCount = 0;
 

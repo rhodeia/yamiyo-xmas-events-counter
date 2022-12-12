@@ -1,3 +1,10 @@
+/* 
+*********************
+Christmas Events Counter (CSS)
+*********************
+Designed by Yamiyo (twitter.com/yamiyoukii)
+Developed by Rhodeia (twitter.com/rhodeia_ch)
+*/
 * {
   font-family: 'Quicksand', sans-serif;
 }
@@ -109,12 +116,10 @@
   0% {
     opacity: 0;
     transform: scale3d(.3,.3,.3);
-    
   }
 
   50% {
     transform: scale3d(1.1, 1.1, 1.1);
-    
   }
 
   75% {
@@ -140,14 +145,13 @@
   50% {
     filter: drop-shadow(0px 0px 20px rgb(255, 225, 116));
   }
-  
 
   100% {
     filter: drop-shadow(0px 0px 0px rgb(255, 225, 116));
   }
 }
 
-#tree-star.glow {
+.glow {
   animation: glow 2.5s infinite ease-in-out;
 }
 
