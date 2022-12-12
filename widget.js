@@ -92,10 +92,11 @@ window.addEventListener('onEventReceived', function (obj) {
     }
 
     if (data.listener === 'widget-button' && data.field === 'resetButton') {
-        updateCount(COUNT_START);
+        count = COUNT_START;
+        updateCount(count);
+        resetTree();
     }
 });
-
 
 function updateCount(count) {
     if (count === prevCount) return;
@@ -146,4 +147,9 @@ function animateTree(count) {
             }            
         }
     }
+}
+
+function resetTree() {
+    $("#tree-star").removeClass("glow");
+    $(".anim-group").removeClass("bounce").addClass("hide");
 }
