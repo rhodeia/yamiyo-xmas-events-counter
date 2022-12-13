@@ -9,7 +9,7 @@ This widget uses the GoalsOverPeriod boilerplate; modified and used with permiss
 https://github.com/StreamElements/widgets
 */
 let index, goal, fieldData, currency, userLocale, prevCount, timeout;
-let animationCount = 0;
+let currentAnimation = 0;
 
 const TOTAL_ANIMATIONS = 10;
 const COUNT_START = 0;
@@ -96,6 +96,38 @@ window.addEventListener('onEventReceived', function (obj) {
         updateCount(count);
         resetTree();
     }
+
+    if (data.field === 'testIncrement1') {
+        console.log("Test: Add 1 to counter");
+        console.log("count type is: ",typeof count);
+        console.log("count is: ",count);
+        count += 1;
+        updateCount(count);
+    }
+
+    if (data.field === 'testIncrement5') {
+        console.log("Test: Add 5 to counter");
+        console.log("count type is: ",typeof count);
+        console.log("count is: ",count);
+        count += 5;
+        updateCount(count);
+    }
+
+    if (data.field === 'testIncrement10') {
+        console.log("Test: Add 10 to counter");
+        console.log("count type is: ",typeof count);
+        console.log("count is: ",count);
+        count += 10;
+        updateCount(count);
+    }
+
+    if (data.field === 'testIncrement50') {
+        console.log("Test: Add 50 to counter");
+        console.log("count type is: ",typeof count);
+        console.log("count is: ",count);
+        count += 50;
+        updateCount(count);
+    }
 });
 
 function updateCount(count) {
@@ -109,10 +141,13 @@ function updateCount(count) {
         } else if (fieldData.onGoalReach === "reset") {
             fieldData.onGoalReach === "reset";
             count = count % goal;
+            resetTree();
         }
     }
     clearTimeout(timeout);
     prevCount = count;
+    
+    animateTree(count);
    
     if (fieldData['eventType'] === 'tip') {
         if (count % 1) {
@@ -121,35 +156,32 @@ function updateCount(count) {
             count = count.toLocaleString(userLocale, {minimumFractionDigits: 0, style: 'currency', currency: currency})
         }
     }
+
     $("#count").html(count);
-    
-    animateTree(count);
 }
 
 function animateTree(count) {
-    if (animationCount <= (TOTAL_ANIMATIONS))  {
-        let goalReachedPercentage = count/goal; 
-        console.log("% of goal reached: ",goalReachedPercentage * 100,"%");
-        let groupsToAnimate = Math.min(Math.ceil(goalReachedPercentage * TOTAL_ANIMATIONS), TOTAL_ANIMATIONS);
-        // console.log("groups to animate: ",groupsToAnimate);
+    if (currentAnimation <= TOTAL_ANIMATIONS)  {
+        let goalReachedPercentage = count/goal;
 
-        for (let i = animationCount; i < groupsToAnimate; i++) {
-            animationCount++;
-            // console.log("animating group "+i+" ",animationCount);
+        let groupsToAnimate = Math.min(Math.floor(goalReachedPercentage * TOTAL_ANIMATIONS), TOTAL_ANIMATIONS);
 
-            if (animationCount === TOTAL_ANIMATIONS) {
+        for (let i = currentAnimation; i < groupsToAnimate; i++) {
+            currentAnimation++;
+
+            if (currentAnimation === TOTAL_ANIMATIONS) {
                 $("#tree-star").addClass("glow");
-            } else {
-                // $(".anim-group"+animationCount).removeClass("hide").addClass("animate__animated animate__bounceIn");
-
-                // TODO: Handle removal of animation class
-                $(".anim-group"+animationCount).removeClass("hide").addClass("bounce");
+            } 
+            
+            if (currentAnimation <= TOTAL_ANIMATIONS) {
+                $(".anim-group"+currentAnimation).removeClass("hide").addClass("bounce");
             }            
         }
     }
 }
 
 function resetTree() {
+    currentAnimation = COUNT_START;
     $("#tree-star").removeClass("glow");
     $(".anim-group").removeClass("bounce").addClass("hide");
 }
