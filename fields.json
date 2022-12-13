@@ -579,10 +579,5 @@
     "group": "Text",
     "type": "hidden",
     "value": "1.0"
-  },
-  "widgetUpdateUrl": {
-    "group": "Text",
-    "type": "hidden",
-    "value": "https://github.com/rhodeia/yamiyo-xmas-events-counter"
   }
 }
