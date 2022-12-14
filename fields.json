@@ -541,34 +541,10 @@
     "label": "NOTE: Clicking the blue button above will reset your current goal progress to 0.",
     "value": true
   },
-  "testIncrement1": {
-    "group": "Test",
-    "type": "button",
-    "name": "testIncrement1",
-    "label": "Add 1"
-  },
-  "testIncrement5": {
-    "group": "Test",
-    "type": "button",
-    "name": "testIncrement5",
-    "label": "Add 5"
-  },
-  "testIncrement10": {
-    "group": "Test",
-    "type": "button",
-    "name": "testIncrement10",
-    "label": "Add 10"
-  },
-  "testIncrement50": {
-    "group": "Test",
-    "type": "button",
-    "name": "testIncrement50",
-    "label": "Add 50"
-  },
   "widgetName": {
     "group": "Text",
     "type": "hidden",
-    "value": "Xmas Events Widget"
+    "value": "Christmas Events Widget"
   },
   "widgetAuthor": {
     "group": "Text",

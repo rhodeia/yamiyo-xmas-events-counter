@@ -96,38 +96,6 @@ window.addEventListener('onEventReceived', function (obj) {
         updateCount(count);
         resetTree();
     }
-
-    if (data.field === 'testIncrement1') {
-        console.log("Test: Add 1 to counter");
-        console.log("count type is: ",typeof count);
-        console.log("count is: ",count);
-        count += 1;
-        updateCount(count);
-    }
-
-    if (data.field === 'testIncrement5') {
-        console.log("Test: Add 5 to counter");
-        console.log("count type is: ",typeof count);
-        console.log("count is: ",count);
-        count += 5;
-        updateCount(count);
-    }
-
-    if (data.field === 'testIncrement10') {
-        console.log("Test: Add 10 to counter");
-        console.log("count type is: ",typeof count);
-        console.log("count is: ",count);
-        count += 10;
-        updateCount(count);
-    }
-
-    if (data.field === 'testIncrement50') {
-        console.log("Test: Add 50 to counter");
-        console.log("count type is: ",typeof count);
-        console.log("count is: ",count);
-        count += 50;
-        updateCount(count);
-    }
 });
 
 function updateCount(count) {
@@ -170,7 +138,7 @@ function animateTree(count) {
 
             if (currentAnimation === TOTAL_ANIMATIONS) {
                 $("#tree-star").addClass("glow");
-            } 
+            }  
             
             if (currentAnimation <= TOTAL_ANIMATIONS) {
                 $(".anim-group"+currentAnimation).removeClass("hide").addClass("bounce");
@@ -179,7 +147,7 @@ function animateTree(count) {
     }
 }
 
-function resetTree() {
+function resetTree() { 
     currentAnimation = COUNT_START;
     $("#tree-star").removeClass("glow");
     $(".anim-group").removeClass("bounce").addClass("hide");
