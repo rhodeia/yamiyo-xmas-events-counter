@@ -1,6 +1,6 @@
 /* 
 *********************
-Christmas Events Widget (JS)
+F2U Christmas Events Widget (JS)
 *********************
 Designed by Yamiyo (twitter.com/yamiyoukii)
 Developed by Rhodeia (twitter.com/rhodeia_ch)
