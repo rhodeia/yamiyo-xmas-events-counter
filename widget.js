@@ -5,7 +5,7 @@ F2U Christmas Events Widget (JS)
 Designed by Yamiyo (twitter.com/yamiyoukii)
 Developed by Rhodeia (twitter.com/rhodeia_ch)
 
-This widget uses the GoalsOverPeriod boilerplate; modified and used with permission from the official StreamLabs widgets Github repo:
+This widget uses the GoalsOverPeriod boilerplate; modified and used with permission from the official StreamElements widgets Github repo:
 https://github.com/StreamElements/widgets
 */
 let index, goal, fieldData, currency, userLocale, prevCount;
