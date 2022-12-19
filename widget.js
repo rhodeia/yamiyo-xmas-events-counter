@@ -113,7 +113,6 @@ function handleTestEvents(data) {
 }
 
 function updateCount(count) {
-
     if (count === prevCount) return;
     if (count >= goal) {
         if (fieldData['autoIncrement'] > 0 && fieldData.onGoalReach === "increment") {
