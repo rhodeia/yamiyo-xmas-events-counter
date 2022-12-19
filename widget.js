@@ -8,7 +8,7 @@ Developed by Rhodeia (twitter.com/rhodeia_ch)
 This widget uses the GoalsOverPeriod boilerplate; modified and used with permission from the official StreamElements widgets Github repo:
 https://github.com/StreamElements/widgets
 */
-let index, goal, fieldData, currency, userLocale, prevCount;
+let count, index, goal, fieldData, currency, userLocale, prevCount, selectedEventType;
 let currentAnimation = 0;
 
 const TOTAL_ANIMATIONS = 10;
@@ -36,10 +36,11 @@ window.addEventListener('onWidgetLoad', async function (obj) {
         userLocale = fieldData["userLocale"];
         currency = obj["detail"]["currency"]["code"];
         index = fieldData['eventType'] + "-" + fieldData['eventPeriod'];
+        selectedEventType = fieldData['eventType'];
         if (fieldData['eventType'] === "subscriber-points") {
             index = fieldData['eventType'];
         }
-        let count = 0;
+        count = 0;
         if (typeof obj["detail"]["session"]["data"][index] !== 'undefined') {
             if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
                 count = obj["detail"]["session"]["data"][index]['amount'];
@@ -70,6 +71,7 @@ let getCounterValue = apiKey => {
     })
 };
 
+
 window.addEventListener('onSessionUpdate', function (obj) {
     if (typeof obj["detail"]["session"][index] !== 'undefined') {
         if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
@@ -78,6 +80,7 @@ window.addEventListener('onSessionUpdate', function (obj) {
             count = obj["detail"]["session"][index]['count'];
         }
     }
+    
     updateCount(count);
 });
 
@@ -96,9 +99,21 @@ window.addEventListener('onEventReceived', function (obj) {
         updateCount(count);
         resetTree();
     }
+
+    if (listener === 'event:test') {
+        handleTestEvents(data);
+    }
 });
 
+function handleTestEvents(data) {
+    if (data?.event?.type === selectedEventType) {
+        count += data.event.amount;
+        updateCount(count);
+    }
+}
+
 function updateCount(count) {
+
     if (count === prevCount) return;
     if (count >= goal) {
         if (fieldData['autoIncrement'] > 0 && fieldData.onGoalReach === "increment") {
@@ -124,7 +139,7 @@ function updateCount(count) {
         }
     }
 
-    $("#count").html(count);
+    $("#count-text").html(`${count}`);
 }
 
 function animateTree(count) {

@@ -529,18 +529,6 @@
       "zu": "Zulu"
     }
   },
-  "resetButton": {
-    "group": "Reset",
-    "type": "button",
-    "name": "resetButton",
-    "label": "Reset goal progress"
-  },
-  "resetCheckbox": {
-    "group": "Reset",
-    "type": "checkbox",
-    "label": "NOTE: Clicking the blue button above will reset your current goal progress to 0.",
-    "value": true
-  },
   "widgetName": {
     "group": "Text",
     "type": "hidden",
